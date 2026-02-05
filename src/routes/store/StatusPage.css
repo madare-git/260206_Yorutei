@@ -1,0 +1,231 @@
+.status-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease;
+}
+
+.status-page.is-open {
+  background: linear-gradient(180deg, #dcfce7 0%, #f0fdf4 100%);
+}
+
+.status-page.is-closed {
+  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.status-loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* メインステータストグル */
+.main-toggle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 1rem;
+  min-height: 45vh;
+}
+
+.main-toggle.open {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+}
+
+.main-toggle.closed {
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+  color: white;
+}
+
+.main-toggle:active {
+  transform: scale(0.98);
+}
+
+.toggle-status {
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-hint {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+/* 残り食数セクション */
+.count-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1.5rem;
+  min-height: 45vh;
+  transition: opacity 0.3s;
+}
+
+.count-section.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.count-label {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.count-control {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.count-btn {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 50%;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.count-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.count-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.count-btn.minus {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.count-btn.minus:hover:not(:disabled) {
+  background: #fecaca;
+}
+
+.count-btn.plus {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.count-btn.plus:hover:not(:disabled) {
+  background: #bbf7d0;
+}
+
+.count-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.count-number {
+  font-size: 6rem;
+  font-weight: bold;
+  color: var(--text);
+  min-width: 120px;
+  text-align: center;
+  line-height: 1;
+}
+
+.count-unit {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+/* クイック設定ボタン */
+.quick-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.quick-btn {
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.quick-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.quick-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* 戻るボタン */
+.back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-button:hover {
+  background: white;
+  color: var(--primary);
+}
+
+/* モバイル最適化 */
+@media (max-width: 480px) {
+  .toggle-status {
+    font-size: 3rem;
+  }
+
+  .count-number {
+    font-size: 5rem;
+  }
+
+  .count-btn {
+    width: 64px;
+    height: 64px;
+    font-size: 2.5rem;
+  }
+
+  .quick-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,355 @@
+/* =========================================================
+   サイドバー共通
+   ========================================================= */
+.sidebar {
+  width: 280px;
+  min-width: 250px;
+  padding: 15px 15px 0 15px;
+  background-color: #ffffff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 10;
+  flex-shrink: 0;
+  transition: background-color 0.5s;
+}
+
+.sidebar-overtime {
+  background-color: #fee2e2;
+}
+
+/* =========================================================
+   通常モード: タイトル・検索・フィルタ・リスト
+   ========================================================= */
+.sidebar-title {
+  font-size: 1.25em;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.sidebar-search { margin-bottom: 15px; }
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 0.9em;
+}
+.search-input:focus { outline: none; border-color: #4285F4; }
+
+.display-mode-toggle {
+  display: flex;
+  gap: 10px;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+.mode-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: #555;
+}
+.mode-label input[type="radio"] { accent-color: #4285F4; }
+
+/* 店舗リスト */
+.shop-list { list-style: none; padding: 0; margin: 0; }
+
+.shop-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.shop-item:hover { background-color: #f0f0f5; }
+
+.shop-item.is-active {
+  background-color: #e6f7ff;
+  border-left: 5px solid #007bff;
+  padding-left: 10px;
+}
+.shop-item.is-active .shop-name { color: #007bff; }
+.shop-item.is-inactive { opacity: 0.6; }
+
+.shop-name {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+.shop-status.providing { color: green; font-weight: 700; }
+.shop-status.stopped { color: red; }
+.shop-detail { font-size: 0.9em; color: #7f8c8d; }
+
+.shop-item-empty {
+  padding: 30px 0;
+  text-align: center;
+  color: #999;
+  font-size: 0.9em;
+}
+
+/* =========================================================
+   Phase: navigating（移動中）
+   ========================================================= */
+.nav-view {
+  padding: 20px 5px;
+  text-align: center;
+  height: 100%;
+}
+.nav-title { color: #ff5722; font-size: 1.3em; margin-bottom: 10px; }
+.nav-timer { font-size: 3.5em; font-weight: 900; margin: 15px 0; color: #333; }
+.nav-store-name { font-weight: 700; font-size: 1.1em; color: #2c3e50; }
+
+.nav-divider {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+}
+
+.nav-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.nav-arrive-btn {
+  width: 100%;
+  padding: 15px;
+  background: #4285F4;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-arrive-btn:hover { background: #3367d6; }
+
+.nav-cancel-btn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: #999;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-cancel-btn:hover {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
+/* =========================================================
+   到着確認モーダル
+   ========================================================= */
+.arrival-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+.arrival-modal {
+  background: white;
+  width: 90%;
+  max-width: 360px;
+  border-radius: 20px;
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.arrival-modal-title {
+  padding: 20px 20px 0;
+  text-align: center;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.arrival-modal-text {
+  padding: 12px 20px 20px;
+  text-align: center;
+  color: #666;
+  font-size: 0.95em;
+}
+
+.arrival-modal-actions {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+.arrival-modal-actions button {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95em;
+  transition: background 0.2s;
+}
+.arrival-modal-cancel {
+  background: white;
+  color: #666;
+}
+.arrival-modal-cancel:hover { background: #f5f5f5; }
+.arrival-modal-confirm {
+  background: #4285F4;
+  color: white;
+}
+.arrival-modal-confirm:hover { background: #3367d6; }
+
+/* =========================================================
+   Phase: photo（写真撮影）
+   ========================================================= */
+.photo-view {
+  padding: 20px 5px;
+  text-align: center;
+}
+.photo-title {
+  color: #333;
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+.photo-desc {
+  font-size: 0.85em;
+  color: #777;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.photo-upload-area {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  margin-bottom: 16px;
+}
+.photo-upload-area:hover { border-color: #4285F4; }
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 8px;
+  color: #aaa;
+  font-size: 0.9em;
+}
+.photo-placeholder-icon { font-size: 2.5em; }
+
+.photo-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-file-input { display: none; }
+
+.photo-next-btn {
+  width: 100%;
+  padding: 14px;
+  background: #4285F4;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.photo-next-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.photo-next-btn:hover:not(:disabled) { background: #3367d6; }
+
+/* =========================================================
+   Phase: dining（食事タイマー）
+   ========================================================= */
+.dining-view {
+  padding: 20px 5px;
+  text-align: center;
+  height: 100%;
+}
+
+.dining-title {
+  color: #4CAF50;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+.dining-title-overtime {
+  color: #C62828;
+}
+
+.dining-message {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.dining-timer {
+  font-size: 3.5em;
+  font-weight: 900;
+  margin: 15px 0;
+  color: #333;
+  transition: color 0.5s;
+}
+.dining-timer-overtime {
+  color: #C62828;
+}
+
+.dining-store-name {
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #2c3e50;
+}
+
+.dining-overtime-message {
+  font-size: 1em;
+  color: #C62828;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.dining-overtime-sub {
+  font-size: 0.85em;
+  color: #999;
+  margin-top: 8px;
+}
+
+.dining-complete-btn {
+  width: 100%;
+  padding: 15px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dining-complete-btn:hover { background: #43a047; }

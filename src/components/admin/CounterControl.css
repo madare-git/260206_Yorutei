@@ -1,0 +1,126 @@
+.counter-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.counter-control.disabled {
+  opacity: 0.5;
+}
+
+.counter-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.counter-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.counter-btn {
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.counter-btn.decrement {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.counter-btn.decrement:hover:not(:disabled) {
+  background: #fecaca;
+}
+
+.counter-btn.increment {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.counter-btn.increment:hover:not(:disabled) {
+  background: #bbf7d0;
+}
+
+.counter-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.counter-display {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+}
+
+.counter-value {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--text);
+  min-width: 80px;
+  text-align: center;
+}
+
+.counter-unit {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+}
+
+.quick-set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.quick-set-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.quick-set-buttons {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.quick-set-btn {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-set-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.quick-set-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.quick-set-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

@@ -1,0 +1,22 @@
+.register-page {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.register-header {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.register-header h1 {
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.register-main {
+  padding: var(--space-lg);
+  max-width: 500px;
+  margin: 0 auto;
+}
