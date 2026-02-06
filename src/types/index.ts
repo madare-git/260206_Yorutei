@@ -16,6 +16,7 @@ export interface StoreRealtimeStatus {
     lat: number;
     lng: number;
   };
+  maxDiningMinutes?: number; // 滞在可能時間（デフォルト45分）
 }
 
 // 店舗マスタ情報（Firebase Auth + Realtime DB）
@@ -44,15 +45,35 @@ export interface Store extends StoreMaster {
   realtimeStatus?: StoreRealtimeStatus;
 }
 
+// ユーザー位置情報
+export interface UserLocation {
+  lat: number;
+  lng: number;
+  updatedAt: number;
+}
+
+// 到着予想情報
+export interface EstimatedArrival {
+  durationSeconds: number;  // 残り歩行時間（秒）
+  distanceMeters: number;   // 残り距離（m）
+  updatedAt: number;
+}
+
 // 予約情報
 export interface Reservation {
   id: string;
   storeId: string;
   userId: string;
-  status: 'active' | 'completed' | 'cancelled' | 'expired';
+  status: 'active' | 'arrived' | 'completed' | 'cancelled' | 'expired';
   createdAt: number;
   expiresAt: number;
   quantity: number;
+  // 拡張フィールド
+  userDisplayName?: string;           // 表示用ユーザー名
+  userLocation?: UserLocation | null; // ユーザー現在地（arrived時にnull化）
+  estimatedArrival?: EstimatedArrival | null; // ETA情報
+  arrivedAt?: number | null;          // 来店時刻
+  diningExpiresAt?: number | null;    // 退店目安時刻
 }
 
 // ユーザー情報
@@ -91,6 +112,12 @@ export interface FirebaseReservationData {
   createdAt: number | object;
   expiresAt: number;
   quantity: number;
+  // 拡張フィールド
+  userDisplayName?: string;
+  userLocation?: UserLocation | null;
+  estimatedArrival?: EstimatedArrival | null;
+  arrivedAt?: number | null;
+  diningExpiresAt?: number | null;
 }
 
 export interface FirebaseUserData {

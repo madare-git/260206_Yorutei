@@ -6,6 +6,14 @@
   transition: background 0.3s ease;
 }
 
+/* 上部コンテンツエリア（トグル＋残り食数） */
+.status-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* flexbox内でスクロール可能にするため */
+}
+
 .status-page.is-open {
   background: linear-gradient(180deg, #dcfce7 0%, #f0fdf4 100%);
 }
@@ -31,8 +39,8 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  gap: 1rem;
-  min-height: 45vh;
+  gap: 0.75rem;
+  min-height: 25vh;
 }
 
 .main-toggle.open {
@@ -67,9 +75,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  gap: 1.5rem;
-  min-height: 45vh;
+  padding: 1.5rem;
+  gap: 1rem;
+  min-height: 25vh;
   transition: opacity 0.3s;
 }
 
@@ -209,23 +217,39 @@
 
 /* モバイル最適化 */
 @media (max-width: 480px) {
+  .main-toggle {
+    min-height: 20vh;
+    gap: 0.5rem;
+  }
+
   .toggle-status {
-    font-size: 3rem;
-  }
-
-  .count-number {
-    font-size: 5rem;
-  }
-
-  .count-btn {
-    width: 64px;
-    height: 64px;
     font-size: 2.5rem;
   }
 
-  .quick-btn {
-    width: 48px;
-    height: 48px;
+  .toggle-hint {
     font-size: 1rem;
+  }
+
+  .count-section {
+    min-height: 20vh;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .count-number {
+    font-size: 4rem;
+    min-width: 100px;
+  }
+
+  .count-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 2rem;
+  }
+
+  .quick-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 0.9rem;
   }
 }
